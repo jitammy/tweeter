@@ -11,7 +11,7 @@ $(document).ready(function() {
           } else {
             $("span").removeClass("notValid")
           }
-  });
+    })
 });
   
   // This changes the character counter everytime a key is released.

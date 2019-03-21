@@ -5,6 +5,7 @@ section.new-tweet {
     border-radius: 10px;
     padding: 10px;
     padding-bottom: 30px;
+    height: 200px;
 }
 
 section h2 {
@@ -35,6 +36,3 @@ section .counter{
 section .notValid{
     color: red;
 }
-   
-      
-      
