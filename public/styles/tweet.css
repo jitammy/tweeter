@@ -1,71 +1,33 @@
-
-section.main-tweet-section{
-    height: 300px;
-    margin-top: 2em;
-    margin-right: 2em;
-    margin-left: 2em;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background-color:white;
-    opacity: 0.6;
+section #tweet{
+    margin-top: 260px;
   }
-
-section .tweet-header-sizing{
-    background-color: rgb(231, 211, 211);
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
+article.tweet{
+    margin: 2em;
+    border: 2px solid #e8e5e5;
     border-radius: 5px;
 }
-
-section .img-h2-header{
-    align-items: center;
-    display: flex;
-    height: 100%;
+article.tweet header{
+    background-color: rgba(231, 235, 240, 0.836);
+    display: flex;   
 }
-
-article img{
-    display: inline;
+article.tweet header img{
+    margin: 0.5em;  
+    border-radius: 10px;
+}
+article .tweet header h2{
+    margin: 0.5em;  
+}
+article.tweet header h3{
+    margin-left: auto;
+    order: 2;
     padding: 0.4rem;
 }
-article .move-it{
-    display: inline;
-    font-size: 1.5rem;
-    align-self: stretch;
-}
-
-article .h3-header-text{
-    font-size: 1rem;
-    padding-right: 0.6rem;
-    padding-top: 0.6rem;
-}
-
-article .main-tweet-box{
-    display: flex;
-    padding-bottom: 3rem;
-    padding-top: 3rem;
-    background-color: white;
-
-}
-
-article p.main-tweet-text{
+article .tweet-box {
     display: flex;
     justify-content: initial;
-    font-size: 1.0rem;
-    padding-left: 1rem;
-    padding-right: 1.0em;
+    padding: 3rem 1em;
+    border-bottom: 1px solid;
 }
-
-article footer.footer-main {
-    border-top: 0.5px solid black;
-    width: 100%;
-    background-color: white;
+article footer{
+    padding: 1em;
 }
-
-article .footer-main-h3{
-    display: flex;
-   padding-left: 0.7rem;
-   font: 1rem italic;
-}
-
-

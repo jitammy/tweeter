@@ -3,73 +3,53 @@
   <head>
     <!-- Meta Information -->
     <title>Tweeter - Home Page</title>
-
     <!-- External CSS -->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,700,700i" rel="stylesheet">
     <!-- Include google font in HTML -->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300i,700i" rel="stylesheet">
-
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/nav.css" type="text/css">
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css">
     <link rel="stylesheet" href="/styles/tweet.css" type="text/css">
-
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
-
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script type = "text/javascript" src="/scripts/composer-char-counter.js"></script>
   </head>
-
   <body>
-
     <!-- Top nav bar (fixed) -->
     <nav id="nav-bar">
       <img class="logo" src="/images/bird.png">
       <span class="header">Tweeter</span>
     </nav>
-
     <!-- Page-specific (main) content here -->
-    <main class="container">
-        <section class="new-tweet">
-            <h2>Compose Tweet</h2>
-            <form>
-              <textarea name="text" placeholder="What are you humming about?"></textarea>
-              <input type="submit" value="Tweet">
-              <span class="counter">140</span>
-            </form>
-          </section>
-
-          <section class = "main-tweet-section">
-            <article class = "main-tweet-container">
-              <header class = "tweet-header-sizing">
-                <div class = "img-h2-header">
+    <main>
+      <section class="new-tweet">
+          <h2>Compose Tweet</h2>
+          <form action="/tweets/" method="POST" >
+            <textarea name="text" placeholder="What are you humming about?"></textarea>
+            <input type="submit" value="Tweet">
+            <span class="counter">140</span>
+            <p class="inputTooLarge">input too large</p>
+            <p class="inputEmpty">input empty</p>
+          </form>
+        </section>
+        <section id = "tweet">
+          <article class = "tweet">
+            <header>
                 <img src = "http://placehold.it/50X50">
-                <h2 class = "move-it">Newton
-                </h2>
-              </div>
-              <div class = "h3-header">
-                <h3 class="h3-header-text">@MrPavlovich
-                </h3>           
-              </div>
-              </header>
-              <main class = "main-tweet-box">
-                <p class="main-tweet-text">main body of tweet main body of tweet main body of tweet main body of tweet main body of tweet
-
-                </p>
-              </main>
-              <footer class="footer-main">
-                <div>
-                  <h3 class="footer-main-h3">10 days ago</h3>
-                </div>
-              </footer>
+                <h2>Newton</h2>
+                <h3>@MrPavlovich</h3>
+            </header>
+            <section class="tweet-box">
+              main body of tweet main body of tweet main body of tweet main body of tweet main body of tweet
+            </section>
+            <footer>10 days ago</footer>
             </article>
           </section>
-
     </main>
-
   </body>
 </html>
