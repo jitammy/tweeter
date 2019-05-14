@@ -5,6 +5,7 @@
     <title>Tweeter - Home Page</title>
     <!-- External CSS -->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,700,700i" rel="stylesheet">
     <!-- Include google font in HTML -->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300i,700i" rel="stylesheet">
@@ -41,13 +42,20 @@
           <article class = "tweet">
             <header>
                 <img src = "http://placehold.it/50X50">
-                <h2 class="user">Newton</h2>
-                <h3 class="user-email">@MrPavlovich</h3>
+                <h2>Newton</h2>
+                <h3>@MrPavlovich</h3>
             </header>
             <section class="tweet-box">
               main body of tweet main body of tweet main body of tweet main body of tweet main body of tweet
             </section>
-            <footer class="date-created">10 days ago</footer>
+            <footer>
+              <div class="date-passed">10 days ago</div>
+
+                <a href="#"><span class="glyphicon glyphicon-flag"></span></a>
+                <a href="#"><span class="glyphicon glyphicon-retweet"></span></a>
+                <a href="#"><span class="glyphicon glyphicon-heart"></span></a>
+
+            </footer>
             </article>
           </section>
     </main>

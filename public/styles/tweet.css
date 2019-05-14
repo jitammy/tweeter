@@ -30,4 +30,20 @@ article .tweet-box {
 }
 article footer{
     padding: 1em;
+    display: flex;
+    justify-content: flex-start;
+
+}
+article footer a{
+    margin-left: auto;
+    order: 1;
+    padding-left: 0.5em;
+    display: none;
+    color:#20B2AA;
+}
+article:hover{
+    border: 2px solid #0f0f0f;
+}
+article:hover a{
+    display: block;
 }
