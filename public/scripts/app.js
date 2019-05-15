@@ -5,9 +5,9 @@
  */
 $(document).ready(function(){
   // 在这里写你的代码...
-document.addEventListener("dblclick", (event) => {
-    console.log(event);
-  });
+// document.addEventListener("dblclick", (event) => {
+//     console.log(event);
+//   });
 const data = [
     {
       "user": {
@@ -85,16 +85,24 @@ function createTweetElement(tweetdata) {
   `)
   return $tweet;
 }
-renderTweets(data);
-$.ajax({
-  url: '/tweets',
-  method: 'POST',
-  data: $(this).closest("form").find("textarea").serialize(),
-  success: function (alltweets) {
-    $("#tweets").empty();
-    loadTweets();
-    }
-  });
-  $(this).closest(".new-tweet").find("textarea").val("");
+renderTweets(data)
 
+$('form').on("submit", event => {
+event.preventDefault()
+let data = $(this).find("#words").serialize();
+console.log(data)
+$.ajax({
+url: '/tweets',
+method: 'POST',
+data: data,
+success: function () {
+  // $("#tweets").empty();
+  // loadTweets();
+
+
+
+  }
+})
+// $(this).closest(".new-tweet").find("textarea").val("");
+});
 });
