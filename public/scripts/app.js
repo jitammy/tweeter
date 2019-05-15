@@ -86,4 +86,9 @@ $(document).ready(function () {
     }
   });
   loadTweets()
+
+  $('.button').on("click",function(){
+    console.log("yes")
+    $('.new-tweet').slideToggle("slow")
+})
 });
