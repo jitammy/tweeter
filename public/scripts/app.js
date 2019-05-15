@@ -3,68 +3,29 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-$(document).ready(function(){
+$(document).ready(function () {
   // 在这里写你的代码...
-// document.addEventListener("dblclick", (event) => {
-//     console.log(event);
-//   });
-const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": {
-          "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-          "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-          "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
-        },
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": {
-          "small":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
-          "regular": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc.png",
-          "large":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
-        },
-        "handle": "@rd" },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    },
-    {
-      "user": {
-        "name": "Johann von Goethe",
-        "avatars": {
-          "small":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
-          "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
-          "large":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
-        },
-        "handle": "@johann49"
-      },
-      "content": {
-        "text": "Es ist nichts schrecklicher als eine tätige Unwissenheit."
-      },
-      "created_at": 1461113796368
+  // this is buildtweets
+  // loadTweets()
+  function renderTweets(arr) {
+    // console.log(typeof tweets)
+    // tweets.forEach(function (tweet) {
+    //   $('#tweet').append(createTweetElement(tweet))
+    // })
+    // console.log(tweets)
+    for (let i = 0; i < arr.length; i++){
+      let tweet = createTweetElement(arr[i]);
+      $("#tweet").append(tweet);
     }
-  ]
-function renderTweets(tweets) {
-    tweets.forEach(function(tweet){
-      $('#tweet').append(createTweetElement(tweet))
-    })
   }
-function createTweetElement(tweetdata) {
-  let oneDay = 24*60*60*1000
-  let firstDate = new Date()
-  let secondDate = new Date(tweetdata.created_at)
-  let diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)))
-  let $tweet = $(`
+  // this is buildEntry
+  function createTweetElement(tweetdata) {
+    console.log(tweetdata)
+    let oneDay = 24 * 60 * 60 * 1000
+    let firstDate = new Date()
+    let secondDate = new Date(tweetdata.created_at)
+    let diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (oneDay)))
+    let $tweet = $(`
   <article class = "tweet">
   <header>
   <img src = "${tweetdata.user.avatars.small}">
@@ -83,26 +44,27 @@ function createTweetElement(tweetdata) {
   </footer>
   </article>
   `)
-  return $tweet;
-}
-renderTweets(data)
-
-$('form').on("submit", event => {
-event.preventDefault()
-let data = $(this).find("#words").serialize();
-console.log(data)
-$.ajax({
-url: '/tweets',
-method: 'POST',
-data: data,
-success: function () {
-  // $("#tweets").empty();
-  // loadTweets();
-
-
-
+    return $tweet;
+    console.log(typeof tweet)
   }
-})
-// $(this).closest(".new-tweet").find("textarea").val("");
-});
+  // this is get function
+  const loadTweets = (data) => {
+    // console.log(data)
+    $.get('/tweets', (datafromserver) => {
+      renderTweets(datafromserver)
+    })
+  }
+  // this is post ajax funtion
+  $('form').on("submit", event => {
+    event.preventDefault()
+    let data = $(this).find("#words").serialize();
+    // console.log(typeof data) 
+    $.post('/tweets', data).done(function(){
+      $('#tweet').prepend(loadTweets(data));
+      // console.log("yes")
+
+    }).fail(function(){
+      console.log("error")
+    })
+  });
 });
