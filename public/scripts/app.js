@@ -75,13 +75,26 @@ function createTweetElement(tweetdata) {
   </section>
   <footer>
   <div class="date-passed">${diffDays} days ago</div>
+  <div class="icons">
   <a href="#"><span class="glyphicon glyphicon-flag"></span></a>
   <a href="#"><span class="glyphicon glyphicon-retweet"></span></a>
   <a href="#"><span class="glyphicon glyphicon-heart"></span></a>
+  </div>
   </footer>
   </article>
   `)
   return $tweet;
 }
 renderTweets(data);
+$.ajax({
+  url: '/tweets',
+  method: 'POST',
+  data: $(this).closest("form").find("textarea").serialize(),
+  success: function (alltweets) {
+    $("#tweets").empty();
+    loadTweets();
+    }
+  });
+  $(this).closest(".new-tweet").find("textarea").val("");
+
 });

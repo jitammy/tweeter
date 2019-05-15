@@ -1,26 +1,28 @@
-section #tweet{
+section #tweets{
     margin-top: 260px;
+    display: flex;
+    flex-direction: column-reverse; 
   }
 article.tweet{
     margin: 2em;
     border: 2px solid #e8e5e5;
     border-radius: 5px;
 }
-article.tweet header{
+article header{
     background-color: rgba(231, 235, 240, 0.836);
     display: flex;   
 }
-article.tweet header img{
+article header img{
     margin: 0.5em;  
     border-radius: 10px;
 }
-article .tweet header h2{
+article header h2{
     margin: 0.5em;  
 }
-article.tweet header h3{
+article header h3{
     margin-left: auto;
     order: 2;
-    padding: 0.4rem;
+    padding: 1rem;
 }
 article .tweet-box {
     display: flex;
@@ -31,12 +33,11 @@ article .tweet-box {
 article footer{
     padding: 1em;
     display: flex;
-    justify-content: flex-start;
-
+    justify-content: space-between; 
 }
-article footer a{
-    margin-left: auto;
-    order: 1;
+
+article footer .glyphicon{
+
     padding-left: 0.5em;
     display: none;
     color:#20B2AA;
@@ -44,6 +45,6 @@ article footer a{
 article:hover{
     border: 2px solid #0f0f0f;
 }
-article:hover a{
-    display: block;
+article:hover .glyphicon{
+    display: inline;
 }
