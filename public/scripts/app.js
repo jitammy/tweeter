@@ -20,7 +20,7 @@ $(document).ready(function () {
   }
   // this is buildEntry
   function createTweetElement(tweetdata) {
-    console.log(tweetdata)
+    // console.log(tweetdata)
     let oneDay = 24 * 60 * 60 * 1000
     let firstDate = new Date()
     let secondDate = new Date(tweetdata.created_at)
@@ -48,23 +48,55 @@ $(document).ready(function () {
     console.log(typeof tweet)
   }
   // this is get function
-  const loadTweets = (data) => {
+  const loadTweets = () => {
     // console.log(data)
     $.get('/tweets', (datafromserver) => {
+      datafromserver.sort((a,b) => b.created_at - a.created_at)
       renderTweets(datafromserver)
+      $('.counter').text(140)
     })
   }
   // this is post ajax funtion
   $('form').on("submit", event => {
     event.preventDefault()
     let data = $(this).find("#words").serialize();
-    // console.log(typeof data) 
-    $.post('/tweets', data).done(function(){
-      $('#tweet').prepend(loadTweets(data));
-      // console.log("yes")
+    var charCounter = $('#words').val().length;
+    if(charCounter === 0){
+      $('.inputEmpty').slideDown("slow", function(){
+        setTimeout(function(){
+          $('.inputEmpty').slideUp("slow")
+        }), 1000
+      })
+    } else if (charCounter > 140){
+      $('.inputTooLarge').slideDown("slow", function(){
+        setTimeout(function(){
+          $('.inputTooLarge').slideUp("slow")
+        }), 1000
+      })
 
-    }).fail(function(){
-      console.log("error")
-    })
+    } else {
+      $.ajax({
+          url: '/tweets',
+          type: "POST",
+          data: data,
+          success: function(){
+            $('#tweet').empty()
+              $('#tweet').prepend(loadTweets())
+              $('#words').val('')
+          },
+          error: function(){
+            console.log('error')
+          }
+        })
+    }
+    // console.log(charCounter)
+    // $.post('/tweets', data)
+    //   .done(function(){
+    //     $('#tweet').empty()
+    //     $('#tweet').prepend(loadTweets())
+    //     $('#words').val('')
+    //   }).fail(function(){
+    //     console.log("error")
+    //   })
   });
 });

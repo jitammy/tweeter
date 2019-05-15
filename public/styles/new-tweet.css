@@ -30,13 +30,13 @@ section .notValid{
 }
 section .inputTooLarge {
     text-align: center;
-    margin-top: 1px;
+    margin-top: 0.5em;
     display: none;
     color: red;
 }
 section .inputEmpty {
     text-align: center;
-    margin-top: 1px;
+    margin-top: 0.5em;
     display: none;
     color: red;
 }
