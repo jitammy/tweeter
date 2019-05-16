@@ -83,11 +83,11 @@ $(document).ready(function () {
   <section class="tweet-box">${escape(tweetdata.content.text)}
   </section>
   <footer>
-  <div class="date-passed">${getTimeDifference(tweetdata.created_at)}</div>
+  <div class="date-passed">${getTimeDifference(tweetdata.created_at)} ${tweetdata.likes} likes </div>
   <div class="icons">
   <a href="#"><span class="glyphicon glyphicon-flag"></span></a>
   <a href="#"><span class="glyphicon glyphicon-retweet"></span></a>
-  <a href="#"><span class="glyphicon glyphicon-heart"></span></a>
+  <a href="#"><span class="glyphicon glyphicon-heart button"></span></a>
   </div>
   </footer>
   </article>
@@ -145,4 +145,15 @@ $(document).ready(function () {
       $(".new-tweet").slideUp("slow");
     }
   })
-});
+  $("#tweet").on("click", ".button", function () {
+    let someID = $(this).data("ObjectId");
+    $(this).closest(".glyphicon-heart").css("color", "#079b62");
+    $.ajax({
+      url: `/tweets/${someID}/like`,
+      method: "POST",
+      data: { someID: someID }
+    }).done(function () {
+      location.reload();
+    });
+  })
+})

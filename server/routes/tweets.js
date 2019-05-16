@@ -19,14 +19,15 @@ module.exports = function(DataHelpers) {
       res.status(400).json({ error: 'invalid request: no data in POST body'});
       return;
     }
-    console.log("post route")
+    const likes = Math.floor(Math.random()*(100 - 0)+ 0);
     const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
     const tweet = {
       user: user,
       content: {
         text: req.body.text
       },
-      created_at: Date.now()
+      created_at: Date.now(),
+      likes: likes
     };
     DataHelpers.saveTweet(tweet, (err) => {
       if (err) {

@@ -12,7 +12,9 @@
     "content": {
       "text": "Amazon's gonna try to be so efficient in the future, they're going to station delivery people outside your front door, holding random items from your Wishlist."
     },
-    "created_at": 1558039610665
+    "created_at": 1558039610665,
+    "likes": 0
+
   },
   {
     "user": {
@@ -26,7 +28,9 @@
     "content": {
       "text": "Danaerys Targaryen  you're definitely on the list now!"
     },
-    "created_at": 1558039633790
+    "created_at": 1558039633790,
+    "likes": 0
+
   },
   {
     "user": {
@@ -41,6 +45,8 @@
     "content": {
       "text": "Ladies and gentleman, I'm the tallest Lannister now"
     },
-    "created_at": 1558039652548
+    "created_at": 1558039652548,
+    "likes": 0
+
   }
 ]
