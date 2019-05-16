@@ -13,10 +13,66 @@ $(document).ready(function () {
   }
   // this is build one tweet
   function createTweetElement(tweetdata) {
-    let oneDay = 24 * 60 * 60 * 1000
-    let firstDate = new Date()
-    let secondDate = new Date(tweetdata.created_at)
-    let diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (oneDay)))
+    //function to display time on the bottom left of tweets
+    function getTimeDifference(timeCreated) {
+      let currentTime = new Date().getTime();
+      let timeDifference;
+      if (currentTime > timeCreated) {
+        timeDifference = currentTime - timeCreated;
+      } else {
+        timeDifference = timeCreated - currentTime;
+      }
+      timeDifference = Math.floor(timeDifference / 1000);
+      numberSeconds = timeDifference;
+      numberMinutes = Math.floor(numberSeconds / 60);
+      numberHours = Math.floor(numberMinutes / 60);
+      numberDays = Math.floor(numberHours / 24);
+      numberMonths = Math.floor(numberDays / 30);
+      numberYears = Math.floor(numberDays / 365);
+      if (numberMonths < 12 && numberMonths > 0) {
+        //if the number of months is between 12 and 0, display the number of months
+        if (numberMonths === 1) {
+          return numberMonths + " month ago";
+        } else {
+          return numberMonths + " months ago";
+        }
+      } else if (numberDays < 30 && numberDays > 0) {
+        //if the number of days is between 30 and 0, display the number of days
+        if (numberDays === 1) {
+          return numberDays + " day ago";
+        } else {
+          return numberDays + " days ago";
+        }
+      } else if (numberHours < 24 && numberHours > 0) {
+        //if the number of hours is between 24 and 0, display the number of hours
+        if (numberHours === 1) {
+          return numberHours + " hour ago";
+        } else {
+          return numberHours + " hours ago";
+        }
+      } else if (numberMinutes < 60 && numberMinutes > 0) {
+        //if the number of minutes is between 60 and 0, display the number of minutes
+        if (numberMinutes === 1) {
+          return numberMinutes + " minute ago";
+        } else {
+          return numberMinutes + " minutes ago";
+        }
+      } else if (numberSeconds < 60) {
+        //if the number of seconds is between 60 and 0, display the number of seconds
+        if (numberSeconds === 0) {
+          return "Just Now";
+        } else {
+          return numberSeconds + " seconds ago";
+        }
+      } else {
+        //if all of the options above doesnt count, display number of years
+        if (numberYears === 1) {
+          return numberYears + " year ago";
+        } else {
+          return numberYears + " years ago";
+        }
+      }
+    }
     let $tweet = $(`
   <article class = "tweet">
   <header>
@@ -27,7 +83,7 @@ $(document).ready(function () {
   <section class="tweet-box">${escape(tweetdata.content.text)}
   </section>
   <footer>
-  <div class="date-passed">${diffDays} days ago</div>
+  <div class="date-passed">${getTimeDifference(tweetdata.created_at)}</div>
   <div class="icons">
   <a href="#"><span class="glyphicon glyphicon-flag"></span></a>
   <a href="#"><span class="glyphicon glyphicon-retweet"></span></a>
