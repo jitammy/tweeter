@@ -1,10 +1,4 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
 $(document).ready(function () {
-  // 在这里写你的代码...
   // this is to build tweets
   function escape(str) {
     var div = document.createElement('div');
@@ -17,7 +11,7 @@ $(document).ready(function () {
       $("#tweet").append(tweet);
     }
   }
-  // this is buildEntry
+  // this is build one tweet
   function createTweetElement(tweetdata) {
     let oneDay = 24 * 60 * 60 * 1000
     let firstDate = new Date()
@@ -87,7 +81,7 @@ $(document).ready(function () {
   });
   loadTweets()
   $('.button').on("click", function () {
-    (this).blur()//to remove the blue border when click button
+    (this).blur()
     if ($(".new-tweet").css("display") === "none") {
       $(".new-tweet").slideDown("slow");
       $("#words").focus();
