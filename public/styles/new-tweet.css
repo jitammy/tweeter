@@ -5,6 +5,7 @@ section.new-tweet {
     border-radius: 5px;
     padding: 1em;
     height: 180px;
+    
 }
 section.new-tweet h2 {
     text-align: left;
