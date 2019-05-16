@@ -6,7 +6,7 @@
 $(document).ready(function () {
   // 在这里写你的代码...
   // this is to build tweets
-  function escape(str){
+  function escape(str) {
     var div = document.createElement('div');
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
@@ -54,7 +54,7 @@ $(document).ready(function () {
     })
   }
   // this is post ajax funtion
-  $('form').on("submit", event => {
+  $('#input-text').on("submit", event => {
     event.preventDefault()
     let data = $(this).find("#words").serialize();
     var charCounter = $('#words').val().length;
@@ -86,10 +86,13 @@ $(document).ready(function () {
     }
   });
   loadTweets()
-  $('.button').on("click",function(){
-    $('.new-tweet').slideToggle("slow")
-})
-  $('.button').on("click", function(){
-    $('#words').focus()
+  $('.button').on("click", function () {
+    (this).blur()//to remove the blue border when click button
+    if ($(".new-tweet").css("display") === "none") {
+      $(".new-tweet").slideDown("slow");
+      $("#words").focus();
+    } else {
+      $(".new-tweet").slideUp("slow");
+    }
   })
 });

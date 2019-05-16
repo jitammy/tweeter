@@ -5,6 +5,7 @@ section.new-tweet {
     border-radius: 5px;
     padding: 1em;
     height: 180px;
+    display: none;
     
 }
 section.new-tweet h2 {
@@ -34,10 +35,13 @@ section .inputTooLarge {
     margin-top: 0.5em;
     display: none;
     color: red;
+    font-weight: 900
 }
 section .inputEmpty {
     text-align: center;
     margin-top: 0.5em;
     display: none;
     color: red;
+    font-weight: 900
+
 }

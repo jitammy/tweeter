@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(morgan('short'));
 
-MongoClient.connect(MONGODB_URI, (err, database) => {
+MongoClient.connect(MONGODB_URI, { useNewUrlParser: true }, (err, database) => {
   var db = database.db('tweeter');
   if (err) {
     console.error(`Failed to connect: ${MONGODB_URI}`);
@@ -30,9 +30,6 @@ MongoClient.connect(MONGODB_URI, (err, database) => {
 // require it and pass the `db` parameter immediately:
 const DataHelpers = require("./lib/data-helpers.js")(db);
 
-DataHelpers.getTweets(function(data) {
-  console.log(data);
-})
 // The `tweets-routes` module works similarly: we pass it the `DataHelpers` object
 // so it can define routes that use it to interact with the data layer.
 const tweetsRoutes = require("./routes/tweets")(DataHelpers);

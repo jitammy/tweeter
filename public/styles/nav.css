@@ -25,6 +25,8 @@
 #nav-bar .button-container{
     margin-left: auto;
     order: 1;
+    
+
 }
 #nav-bar button{
     border: 2px solid black;
