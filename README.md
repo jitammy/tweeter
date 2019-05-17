@@ -1,7 +1,12 @@
 # Tweeter Project
-Tweeter is a simple, single-page Twitter clone.
-This repository is the starter code for the project: Students will fork and clone this repository, then build upon it to practice their HTML, CSS, JS, jQuery and AJAX front-end skills, and their Node, Express and MongoDB back-end skills.
-!["new-tweet image"](https://github.com/jitammy/tweeter/blob/master/docs/new-tweets.png)
+- Primarily a client-side Single Page App (SPA)
+- The client-side app communicates with a server via AJAX
+- Tweets are persisted to MongoDB and survive server restart
+## Main features
+- when user clicks compose button, the compose tweeter box will be shown and textarea inside it will be autofocused
+- Tweet charactor counter turns red when more than 140 charactors have been typed
+- When a user clicks a tweet's "Like" button, the "Like" count is updated
+!["new-tweet image"](https://github.com/jitammy/tweeter/blob/master/docs/new-tweet.png)
 !["tweets"](https://github.com/jitammy/tweeter/blob/master/docs/tweets.png)
 ## Dependencies
 - Express
