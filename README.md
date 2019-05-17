@@ -7,7 +7,7 @@
 - Tweet charactor counter turns red when more than 140 charactors have been typed
 - When a user clicks a tweet's "Like" button, the "Like" count is updated
 !["new-tweet image"](https://github.com/jitammy/tweeter/blob/master/docs/new-tweet.png)
-!["tweets"](https://github.com/jitammy/tweeter/blob/master/docs/tweets.png)
+!["tweets"]( ://github.com/jitammy/tweeter/blob/master/docs/tweets.png)
 ## Dependencies
 - Express
 - Node 5.10.x or above
