@@ -1,10 +1,10 @@
 "use strict";
-const userHelper    = require("../lib/util/user-helper")
-const express       = require('express');
-const tweetsRoutes  = express.Router();
-module.exports = function(DataHelpers) {
+const userHelper = require("../lib/util/user-helper")
+const express = require('express');
+const tweetsRoutes = express.Router();
+module.exports = function (DataHelpers) {
   // get tweets
-  tweetsRoutes.get("/", function(req, res) {
+  tweetsRoutes.get("/", function (req, res) {
     DataHelpers.getTweets((err, tweets) => {
       if (err) {
         res.status(500).json({ error: err.message });
@@ -14,12 +14,12 @@ module.exports = function(DataHelpers) {
     });
   });
   // post tweets
-  tweetsRoutes.post("/", function(req, res) {
+  tweetsRoutes.post("/", function (req, res) {
     if (!req.body.text) {
-      res.status(400).json({ error: 'invalid request: no data in POST body'});
+      res.status(400).json({ error: 'invalid request: no data in POST body' });
       return;
     }
-    const likes = Math.floor(Math.random()*(100 - 0)+ 0);
+    const likes = Math.floor(Math.random() * (100 - 0) + 0);
     const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
     const tweet = {
       user: user,
@@ -37,5 +37,15 @@ module.exports = function(DataHelpers) {
       }
     });
   });
+  tweetsRoutes.post(`/:someId/like`, function (req, res) {
+  let id = req.params.someId
+    DataHelpers.likeTweet(id, (err) => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+      } else {
+        res.status(201).send();
+      }
+    });
+  })
   return tweetsRoutes;
 }

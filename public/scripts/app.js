@@ -83,11 +83,12 @@ $(document).ready(function () {
   <section class="tweet-box">${escape(tweetdata.content.text)}
   </section>
   <footer>
-  <div class="date-passed">${getTimeDifference(tweetdata.created_at)} ${tweetdata.likes} likes </div>
+  <div class="date-passed">${getTimeDifference(tweetdata.created_at)}  <span class="likes">${tweetdata.likes}</span>  likes</div>
   <div class="icons">
   <a href="#"><span class="glyphicon glyphicon-flag"></span></a>
   <a href="#"><span class="glyphicon glyphicon-retweet"></span></a>
-  <a href="#"><span class="glyphicon glyphicon-heart button"></span></a>
+  <i class="glyphicon glyphicon-heart"  data-objectid = "${tweetdata._id}"></i>
+</button>
   </div>
   </footer>
   </article>
@@ -145,15 +146,19 @@ $(document).ready(function () {
       $(".new-tweet").slideUp("slow");
     }
   })
-  $("#tweet").on("click", ".button", function () {
-    let someID = $(this).data("ObjectId");
-    $(this).closest(".glyphicon-heart").css("color", "#079b62");
-    $.ajax({
-      url: `/tweets/${someID}/like`,
-      method: "POST",
-      data: { someID: someID }
-    }).done(function () {
-      location.reload();
-    });
+  $("section#tweet").on("click", "i", function () {
+    console.log(this)
+    let someID = $(this).data("objectid");
+    console.log(someID)
+    let likesElem =  $(this).closest("footer").find(".likes").text();
+    let likesNum = Number(likesElem)
+    console.log(likesNum)
+      $.ajax({
+        url:`/tweets/${someID}/like`,
+        method: "POST",
+        data: someID,
+      }).done(function(){
+        loadTweets()
+      })
   })
 })
