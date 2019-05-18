@@ -19,7 +19,7 @@ module.exports = function (DataHelpers) {
       res.status(400).json({ error: 'invalid request: no data in POST body' });
       return;
     }
-    const likes = Math.floor(Math.random() * (100 - 0) + 0);
+    const likes = Math.floor(Math.random() * (10 - 0) + 0);
     const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
     const tweet = {
       user: user,
