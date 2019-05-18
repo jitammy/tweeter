@@ -16,7 +16,7 @@
 - mongodb
 ## Getting Started
 - Install all dependencies (using the npm install command).
-- Run the development web server using the node express_server.js command.
+- Run the development web server using the npm start command.
 
 And finally, if you want to experience the app directly, visit
 https://mighty-dusk-16559.herokuapp.com/ to see it on Heroku
