@@ -13,11 +13,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(morgan('short'));
 MongoClient.connect(MONGODB_URI, { useNewUrlParser: true }, (err, database) => {
-  var db = database.db('tweeter');
   if (err) {
     console.error(`Failed to connect: ${MONGODB_URI}`);
     throw err;
-}
+  }
+  var db = database.db('tweeter');
 const DataHelpers = require("./lib/data-helpers.js")(db);
 const tweetsRoutes = require("./routes/tweets")(DataHelpers);
 app.use("/tweets", tweetsRoutes);
